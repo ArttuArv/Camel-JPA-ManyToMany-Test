@@ -1,0 +1,62 @@
+[
+  {
+    "name": "John",
+    "age": 30,
+    "address": {
+      "street": "123 Main St",
+      "city": "Seattle",
+      "state": "WA",
+      "zip": "98101"
+    },
+    "pets": [
+      {
+        "name": "Fluffy",
+        "type": "cat"
+      },
+      {
+        "name": "Fido",
+        "type": "dog"
+      }
+    ]
+  },
+  {
+    "name": "Jane",
+    "age": 25,
+    "address": {
+      "street": "456 Main St",
+      "city": "Seattle",
+      "state": "WA",
+      "zip": "98101"
+    },
+    "pets": [
+      {
+        "name": "Slinky",
+        "type": "snake"
+      },
+      {
+        "name": "Spot",
+        "type": "lizard"
+      }
+    ]
+  },
+  {
+    "name": "Bob",
+    "age": 40,
+    "address": {
+      "street": "789 Main St",
+      "city": "Seattle",
+      "state": "WA",
+      "zip": "98101"
+    },
+    "pets": [
+      {
+        "name": "Hawkeye",
+        "type": "eagle"
+      },
+      {
+        "name": "Bugs",
+        "type": "rabbit"
+      }
+    ]
+  }
+]

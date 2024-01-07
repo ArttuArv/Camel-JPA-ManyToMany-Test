@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence 
+                      http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+  version="2.0" 
+  xmlns="http://java.sun.com/xml/ns/persistence">
+
+  
+  <persistence-unit name="hibernate-localmssql" transaction-type="RESOURCE_LOCAL">
+
+    <description>Persistence Unit for H2 Test database</description>
+
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <class>org.unioulu.solmu.organisaatio.oulucris.models.jpa.VuosiorganisaatioJPA</class>
+    <class>org.unioulu.solmu.organisaatio.oulucris.models.jpa.VuosiorganisaatioyksikkoJPA</class>
+    <class>org.unioulu.solmu.organisaatio.oulucris.models.jpa.OrganisaatiohierarkiaJPA</class>
+      
+    <properties>
+      <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+      <property name="javax.persistence.jdbc.url" 
+        value="jdbc:h2:mem:test;INIT=CREATE SCHEMA IF NOT EXISTS EAI\;CREATE SCHEMA IF NOT EXISTS DEN;" />
+      <property name="javax.persistence.jdbc.password" value="" />      
+      <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+      <property name="hibernate.hbm2ddl.auto" value="create" />
+      <property name="hibernate.show_sql" value="false" />
+      <property name="hibernate.format_sql" value="false" />
+      <property name="hibernate.jdbc.batch_size" value="50"/>
+      <property name="hibernate.allow_update_outside_transaction" value="true"/>
+      <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+    </properties>
+
+  </persistence-unit>
+
+</persistence>

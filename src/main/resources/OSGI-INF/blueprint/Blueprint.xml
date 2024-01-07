@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" xmlns:camel="http://camel.apache.org/schema/blueprint" xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="          http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd          http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd          http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0           http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd">
+    
+    <cm:property-placeholder persistent-id="org.unioulu.jpa.manytomany.example.JpaManyToManyExampleCtx" update-strategy="reload">
+        <cm:default-properties>
+            <cm:property name="example.message" value="Hello world" />
+
+            <!-- Digia Iiris settings -->
+            <cm:property name="iiris.source" value="file" />
+            <cm:property name="iiris.destination" value="mssql" />
+            <cm:property name="iiris.integration.name" value="jpa-manytomany-example" />
+
+            <!-- File properties -->
+            <cm:property 
+                name="json.file.path" 
+                value="Path to file folder" />
+        </cm:default-properties>
+    </cm:property-placeholder>
+
+    <!-- Digia Iiris monitoring -->
+    <bean id="iiris" class="com.digia.camel.component.iiris.IirisComponent" />
+
+    <!-- JPA EntityManagerFactory-->
+    <bean id="EMF" class="javax.persistence.Persistence" factory-method="createEntityManagerFactory">
+        <argument value="hibernate-localmssql" />        
+    </bean>
+
+    <bean id="jpa" class="org.apache.camel.component.jpa.JpaComponent">
+        <property name="entityManagerFactory" ref="EMF"/>          
+    </bean> 
+
+    <!-- Camel Routes -->
+    <bean class="org.unioulu.jpa.manytomany.example.routes.JpaManyToManyExampleRouteBuilder" id="mainRoute" />
+    
+    <camel:camelContext 
+        id="JpaManyToManyExampleCtx" 
+        useBreadcrumb="true" 
+        useMDCLogging="true" 
+        typeConverterExistsLoggingLevel="OFF">
+        <camel:routeBuilder 
+            ref="mainRoute" 
+        />
+    </camel:camelContext>
+</blueprint>
