@@ -10,8 +10,6 @@
 
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-    <!-- <jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=solmu-pooled-prod-ds)</jta-data-source> -->
-    <!-- <jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=solmudev-pooled-ds)</jta-data-source> -->
     <jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=mssql-localhost-ds)</jta-data-source>
       
     <properties>
